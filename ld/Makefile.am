@@ -282,6 +282,7 @@ ALL_EMULATION_SOURCES = \
 	eelf_i386_sol2.c \
 	eelf_i386_vxworks.c \
 	eelf_iamcu.c \
+	eelf_mipsallegrexel_psp.c \
 	eelf_s390.c \
 	eh8300elf.c \
 	eh8300elf_linux.c \
