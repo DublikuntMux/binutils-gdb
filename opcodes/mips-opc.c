@@ -284,14 +284,14 @@ decode_mips_operand (const char *p)
      case 'w': VFPU (VF_BITCNT_ROT, VF_SH_ROT, ROTCNT);   break;
      case 'z': VFPU (VF_BITCNT_RWB, VF_SH_RWB, WRB_BOOL); break;
 
-     case '0': VFPU_EX (VF_BITCNT_PFX, VF_SH_PFX, SPREFIX, 0); break;
-     case '1': VFPU_EX (VF_BITCNT_PFX, VF_SH_PFX, SPREFIX, 1); break;
-     case '2': VFPU_EX (VF_BITCNT_PFX, VF_SH_PFX, SPREFIX, 2); break;
-     case '3': VFPU_EX (VF_BITCNT_PFX, VF_SH_PFX, SPREFIX, 3); break;
-     case '4': VFPU_EX (VF_BITCNT_PFX, VF_SH_PFX, DPREFIX, 0); break;
-     case '5': VFPU_EX (VF_BITCNT_PFX, VF_SH_PFX, DPREFIX, 1); break;
-     case '6': VFPU_EX (VF_BITCNT_PFX, VF_SH_PFX, DPREFIX, 2); break;
-     case '7': VFPU_EX (VF_BITCNT_PFX, VF_SH_PFX, DPREFIX, 3); break;
+     case '0': VFPU_EX (VF_BITCNT_SPFX, VF_SH_PFX, SPREFIX, 0); break;
+     case '1': VFPU_EX (VF_BITCNT_SPFX, VF_SH_PFX, SPREFIX, 1); break;
+     case '2': VFPU_EX (VF_BITCNT_SPFX, VF_SH_PFX, SPREFIX, 2); break;
+     case '3': VFPU_EX (VF_BITCNT_SPFX, VF_SH_PFX, SPREFIX, 3); break;
+     case '4': VFPU_EX (VF_BITCNT_DPFX, VF_SH_PFX, DPREFIX, 0); break;
+     case '5': VFPU_EX (VF_BITCNT_DPFX, VF_SH_PFX, DPREFIX, 1); break;
+     case '6': VFPU_EX (VF_BITCNT_DPFX, VF_SH_PFX, DPREFIX, 2); break;
+     case '7': VFPU_EX (VF_BITCNT_DPFX, VF_SH_PFX, DPREFIX, 3); break;
 
      default:
        assert(0); // Bad operand type
@@ -3538,9 +3538,9 @@ const struct mips_opcode mips_builtin_opcodes[] =
 {"vcmovt.s", "?d0a,?s0a,?e",   0xd2a00000, 0xfff88080, RD_C2,      VFPU_REG,      ALX,		0,	0 },
 {"vcmovf.s", "?d0a,?s0a,?e",   0xd2a80000, 0xfff88080, RD_C2,      VFPU_REG,      ALX,		0,	0 },
 {"vwbn.s",  "?d0a,?s0a,?i",    0xd3000000, 0xff008080, RD_C2,      VFPU_REG,      ALX,		0,	0 },
-{"vpfxs",   "?0,?1,?2,?3", 0xdc000000, 0xff000000, RD_C2,      0,      ALX,		0,	0 },
-{"vpfxt",   "?0,?1,?2,?3", 0xdd000000, 0xff000000, RD_C2,      0,      ALX,		0,	0 },
-{"vpfxd",   "?4,?5,?6,?7", 0xde000000, 0xff000000, RD_C2,      0,      ALX,		0,	0 },
+{"vpfxs",   "?0,?1,?2,?3", 0xdc000000, 0xfff00000, RD_C2,      0,      ALX,		0,	0 },
+{"vpfxt",   "?0,?1,?2,?3", 0xdd000000, 0xfff00000, RD_C2,      0,      ALX,		0,	0 },
+{"vpfxd",   "?4,?5,?6,?7", 0xde000000, 0xfffff000, RD_C2,      0,      ALX,		0,	0 },
 {"viim.s",  "?t0a,j",      0xdf000000, 0xff800000, RD_C2,      VFPU_REG,      ALX,		0,	0 },
 {"vfim.s",  "?t0a,?u",     0xdf800000, 0xff800000, RD_C2,      VFPU_REG,      ALX,		0,	0 },
 {"vflush",  "",            0xffff040d, 0xffffffff, RD_C2,      0,      ALX,		0,	0 },

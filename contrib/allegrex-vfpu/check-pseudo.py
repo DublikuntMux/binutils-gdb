@@ -83,4 +83,12 @@ with tempfile.TemporaryDirectory(prefix='psp-pseudos-') as directory:
     result = run('psp-objdump', '-d', obj)
     require_ok(result)
     assert '5.96046e-08' in result.stdout, result.stdout
+    # Prefix immediates occupy 20 bits (source) or 12 bits (destination).
+    # Reserved high bits must not alias another architecture's instructions.
+    source.write_text('.word 0xdc820000,0xdd800000,0xde001000\n')
+    require_ok(run('psp-as', '-march=allegrex', source, '-o', obj))
+    result = run('psp-objdump', '-d', obj)
+    require_ok(result)
+    for opcode in ('dc820000', 'dd800000', 'de001000'):
+        assert '.word\t0x' + opcode in result.stdout, result.stdout
 print('PASS VFPU load-immediate macros and invalid operands')

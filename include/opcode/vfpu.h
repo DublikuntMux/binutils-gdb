@@ -63,7 +63,8 @@
 #define VF_SH_BMCOND       0
 #define VF_BITCNT_HFLOAT     16
 #define VF_SH_HFLOAT       0
-#define VF_BITCNT_PFX       24
+#define VF_BITCNT_SPFX      20
+#define VF_BITCNT_DPFX      12
 #define VF_SH_PFX       0
 #define VF_BITCNT_RWB        0x1
 #define VF_SH_RWB      1
